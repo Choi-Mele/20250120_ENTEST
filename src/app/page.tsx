@@ -1,101 +1,69 @@
+"use client";
+
+import dynamic from "next/dynamic";
+import Card from "./components/Card/Card";
 import Image from "next/image";
 
-export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+const SwiperArea = dynamic(() => import("@/app/components/Swiper/SwiperArea"), {
+  ssr: false,
+});
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+export default function Main() {
+  const swiperData = [
+    {
+      title: "Lorem ipsum dolor sit amet,",
+      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      imgSrc: "/assets/image/main.jpg",
+    },
+    {
+      title: "Lorem ipsum dolor sit amet,",
+      desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      imgSrc: "/assets/image/main.jpg",
+    },
+  ];
+
+  const cardData = Array.from({ length: 4 }, (_, i) => ({
+    title: "Lorem ipsum dolor sit amet,",
+    subTitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    desc: "Lorem ipsum dolor sit amet,",
+    imgSrc: `/assets/image/img${i + 1}.jpg`,
+  }));
+
+  return (
+    <main className="c_main">
+      <div className="section_1">
+        <SwiperArea data={swiperData} />
+      </div>
+      <div className="section_2">
+        <div className="card_wrapper">
+          {cardData.map((item, index) => (
+            <Card key={index} data={item} />
+          ))}
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </div>
+      <div className="section_3">
+        <div className="section_3_container">
+          <h1 className="c_title">Location</h1>
+          <div className="image_wrapper">
+            <Image
+              src="/assets/image/map.png"
+              alt="map"
+              width={800}
+              height={100}
+            />
+          </div>
+          <div className="info_wrapper">
+            <h2 className="c_sub_title">address</h2>
+            <p className="c_desc">
+              서울특별시 강서구 강서로56가길 141 케이엠빌딩, 6층
+            </p>
+            <h2 className="c_sub_title">way to come</h2>
+            <p className="c_desc">발산역 9번출구에서 300M 직진</p>
+            <h2 className="c_sub_title">contact info</h2>
+            <p className="c_desc">02-3429-3161</p>
+          </div>
+        </div>
+      </div>
+    </main>
   );
 }

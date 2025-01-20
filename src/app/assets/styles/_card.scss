@@ -1,0 +1,44 @@
+@use "./_mixin.scss" as m;
+@use "./_colors.scss" as c;
+
+
+.card_wrapper {
+  @include m.flex(center, space-between);
+  gap: 24px;
+  max-width: 1440px;
+  margin: 156px auto;
+}
+
+.c_card {
+  flex: 1;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 15px 2px rgba(0, 0, 0, 0.3);
+
+  .c_card_img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .c_card_text_content {
+    @include m.flex(start, space-between, column);
+    gap: 20px;
+    padding: 28px 30px;
+    .c_card_title {
+      font-size: 31px;
+      font-weight: 800;
+    }
+    .c_card_sub_title {
+      font-size: 16px;
+      font-weight: 500;
+      color: c.$font-color-sub2;
+      height: 110px;
+    }
+    .c_card_desc {
+      font-size: 18px;
+      font-weight: 300;
+      color: c.$font-color-sub;
+    }
+  }
+}

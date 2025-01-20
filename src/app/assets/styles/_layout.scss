@@ -1,0 +1,123 @@
+@use "./_mixin.scss" as m;
+@use "./_colors.scss" as c;
+
+.c_header {
+  @include m.flex(center, space-between);
+  width: 100%;
+  height: 54px;
+  padding: 0 120px;
+  box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.3);
+
+  background-color: white;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+
+  .c_nav_container {
+    @include m.flex(center, space-between);
+    gap: 45px;
+
+    .c_nav_item {
+      a {
+        font-size: 16px;
+        line-height: 1.5;
+        font-weight: 500;
+        text-transform: uppercase;
+        color: c.$font-color !important;
+      }
+      &:hover {
+        a {
+          color: c.$font-color-sub !important;
+        }
+      }
+      &.active {
+        a {
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}
+
+.c_main {
+  margin-top: 54px;
+  .section_1,
+  .section_2 {
+    height: 800px;
+  }
+  .section_3 {
+    background-color: #efefef;
+
+    .section_3_container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 50px 0;
+      width: 100%;
+    }
+
+    .c_title {
+      font-size: 71px;
+      text-align: center;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .image_wrapper {
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .info_wrapper {
+      @include m.flex(center, space-between, column);
+      gap: 20px;
+      margin: 30px 0;
+      color: c.$font-color;
+
+      .c_sub_title {
+        font-size: 36px;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+      
+      .c_desc {
+        font-size: 24px;
+        font-weight: 400;
+      }
+    }
+  }
+
+  .empty_space {
+    width: 100%;
+    min-height: 80vh;
+    @include m.flex(center, center);
+  }
+}
+
+.c_footer {
+  @include m.flex(center, center);
+  height: 350px;
+  background-color: c.$font-color;
+
+  .c_footer_content {
+    max-width: 1440px;
+    margin: 0 auto;
+    width: 100%;
+    .c_footer_logo {
+      img {
+        width: 255px;
+        height: 100px;
+        filter: grayscale(1) invert(1);
+      }
+    }
+    .copyright {
+      font-size: 16px;
+      font-weight: 400;
+      color: white;
+    }
+  }
+}

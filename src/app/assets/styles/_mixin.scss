@@ -1,0 +1,70 @@
+@mixin position_center($position: absolute) {
+  position: $position;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin flex($align: start, $justify: start, $direction: initial) {
+  display: flex;
+  align-items: $align;
+  justify-content: $justify;
+  flex-direction: $direction;
+}
+
+@mixin align($align: center, $justify: center, $direction: initial) {
+  align-items: $align;
+  justify-content: $justify;
+  flex-direction: $direction;
+}
+
+@mixin inline_flex($align: start, $justify: start, $direction: initial) {
+  display: inline-flex;
+  align-items: $align;
+  justify-content: $justify;
+  flex-direction: $direction;
+}
+
+@mixin content($url, $width: 100%, $height: 100%, $display: block) {
+  content: '';
+  display: $display;
+  width: $width;
+  height: $height;
+  background-image: url($url);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+@mixin before_url($url) {
+  &::before {
+    background-image: url($url);
+  }
+}
+
+@mixin after_url($url) {
+  &::after {
+    background-image: url($url);
+  }
+}
+
+@mixin content_url($url) {
+  background-image: url($url);
+}
+
+@mixin content_without_url($width: 100%, $height: 100%, $display: block) {
+  content: '';
+  display: $display;
+  width: $width;
+  height: $height;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+@mixin ellipsis() {
+  overflow: hidden;
+  white-space: nowrap;
+  word-break: break-all;
+  text-overflow: ellipsis;
+}
